@@ -23,6 +23,30 @@ const list = [
     points: 5,
     objectID: 1,
   },
+  {
+    title: 'Python',
+    url: 'https://www.python.org//',
+    author: 'Guido van Rossum',
+    num_comments: 10,
+    points: 10,
+    objectID: 2,
+  },
+  {
+    title: 'Ruby',
+    url: 'https://www.ruby-lang.org/en/',
+    author: 'Yukihiro Matsumoto',
+    num_comments: 2,
+    points: 5,
+    objectID: 3,
+  },
+  {
+    title: 'Django',
+    url: 'https://www.djangoproject.com/',
+    author: 'Adrian Holovaty',
+    num_comments: 7,
+    points: 5,
+    objectID: 4,
+  },
 ];
 
 const welcome = {
