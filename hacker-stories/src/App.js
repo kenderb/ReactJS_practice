@@ -5,14 +5,12 @@ import React from 'react';
 function getTitle(title) {
   return title;
 }
-const myArray = [1, 2, 3, 4, 5]
+const myArray = ['kender', 2, 3, 4, 5]
 
 const welcome = {
   greeting: 'Hey',
   title: getTitle('React') ,
 };
-
-
 
 function App() {
   return (
