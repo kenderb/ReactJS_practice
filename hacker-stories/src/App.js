@@ -5,7 +5,7 @@ import React from 'react';
 function getTitle(title) {
   return title;
 }
-const myArray = ['kender', 2, 3, 4, 5]
+const myArray = ['kender', 'Bolivar', 'one more', 4, 5]
 
 const welcome = {
   greeting: 'Hey',
