@@ -65,6 +65,7 @@ function App() {
       <input type="text" id="search"/>
       <hr />
       <List />
+      <List />
     </div>
   );
 }
