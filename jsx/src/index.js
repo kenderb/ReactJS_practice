@@ -5,10 +5,11 @@ import ReactDOM from 'react-dom';
 //Create a React component
 const App =  () => {
   const btnText = {text: "I'm a button"};
+  const labelText = 'Name: ';
   return (
     <form action="submit">
       <label className="some-class" for='name'>
-        Name:
+        {labelText}
       </label>
       <input type="text" id="name"/>
       <button style={{backgroundColor: 'blue', color: 'white'}}>
