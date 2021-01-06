@@ -8,7 +8,7 @@ const App =  () => {
   const labelText = 'Name: ';
   return (
     <form action="submit">
-      <label className="some-class" for='name'>
+      <label className="some-class" htmlFor='name'>
         {labelText}
       </label>
       <input type="text" id="name"/>
