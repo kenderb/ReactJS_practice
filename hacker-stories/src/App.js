@@ -2,9 +2,21 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 
-function getTitle(title) {
+const getTitle = (title) => {
   return title;
 }
+
+
+const list2 = [
+  {
+    title: 'Test',
+    url: 'https://reactjs.org/',
+    author: 'Randon Name',
+    num_comments: 3,
+    points: 4,
+    objectID: 0,
+  }, 
+]
 
 const list = [
   {
@@ -54,6 +66,7 @@ const welcome = {
   title: getTitle('React') ,
 };
 
+<<<<<<< HEAD
 function App() {
   return (
     <div>
@@ -69,19 +82,31 @@ function App() {
     </div>
   );
 }
+=======
+const App = () => (
+  <div>
+    <img src={logo} alt="react logo" className="App-logo"/>
+    <h1>
+      My Hacker Stories
+    </h1>
+    <label htmlFor="search">Search: </label>
+    <input type="text" id="search"/>
+    <hr />
+    <List data={list2}/>
+    <List />
+  </div>
+);
+>>>>>>> d573d69a590598b28e4351abea7d587fae18258e
 
-function List() {
-  return list.map(function(item) {
-    return (
-        <div key={item.objectID}>
-          <span>
-            <a href={item.url}>{item.title}</a>
-          </span>
-          <span>{item.author}</span>
-          <span>{item.num_comments}</span>
-          <span>{item.points}</span>
-        </div>
-      );
-  });
-}
+const List = () => 
+  list.map(item => (
+    <div key={item.objectID}>
+      <span>
+        <a href={item.url}>{item.title}</a>
+      </span>
+      <span>{item.author}</span>
+      <span>{item.num_comments}</span>
+      <span>{item.points}</span>
+    </div>
+));
 export default App;
