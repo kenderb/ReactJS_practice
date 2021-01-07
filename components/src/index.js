@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import faker from 'faker';
+import avatar from './images/faces/ceekaytweet_128.jpg'
 
 const App = () => {
   return (
     <div className="ui container comments">
       <div className="comment">
         <a href="/" className="avatar">
-          <img  alt="avatar" src={faker.image.avatar()} />
+          <img  alt="avatar" src={avatar} />
         </a>
         <div className="content">
           <a href="/" className="author">
