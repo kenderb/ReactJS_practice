@@ -23,8 +23,17 @@ class App extends React.Component {
     );
   }
 
+  showLoadingmessage(){
+    return(
+      <div>
+        Loading.......
+      </div>
+    );
+  }
+
   render() {
     if (this.state.errorMessage) return this.showErrormessage();
+    if (!this.state.errorMessage && !this.state.latitude) return this.showLoadingmessage();
     return(
       <div>
         Latitud: { this.state.latitude } <br/>
