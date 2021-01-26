@@ -11,7 +11,7 @@ const App = () => {
         </a>
         <div className="content">
           <a href="/" className="author">
-            Sam
+            Kender B
           </a>
           <div className="metadata">
             <span className="date">
