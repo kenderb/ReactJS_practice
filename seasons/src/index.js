@@ -4,12 +4,12 @@ import SeasonDsiplay from './SeasonDisplay';
 
 const App = () => {
   window.navigator.geolocation.getCurrentPosition(
-    (position) => console.log(position.coords),
+    (position) => position.coords,
     (error) => console.log(error)
   );
   return(
     <div>
-      {/* <SeasonDsiplay /> */}
+      Latitud:
     </div>
   );
 };
