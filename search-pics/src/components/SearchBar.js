@@ -3,11 +3,11 @@ import React from 'react';
 export default class SearchBar extends React.Component {
   render() {
     return(
-      <div>
-        <form action="/">
+      <form action="/" className="ui form">
+        <div className="field">
           <input type="text" placeholder="Type your image name"/>
-        </form>
-      </div>
+        </div>
+      </form>
     )
   }
 }
