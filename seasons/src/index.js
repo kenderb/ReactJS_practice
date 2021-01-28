@@ -28,12 +28,20 @@ class App extends React.Component {
     );
   }
 
-  render() {
+  renderContent() {
     if (this.state.errorMessage) return this.showErrorMessage();
     if (!this.state.errorMessage && !this.state.latitude) return this.showLoadingMessage();
     return(
       <div>
         <SeasonDsiplay latitude={ this.state.latitude }/>
+      </div>
+    );
+  }
+
+  render() {
+    return(
+      <div>
+        {this.renderContent()}
       </div>
     );
   }
