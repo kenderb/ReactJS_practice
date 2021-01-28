@@ -6,16 +6,21 @@ class App extends React.Component {
 
   showErrorMessage(){
     return(
-      <div>
-        Error: {this.state.errorMessage}
+      <div class="ui negative message">
+        <div class="header">
+          Error: {this.state.errorMessage}
+        </div>
       </div>
     );
   }
 
   showLoadingMessage(){
     return(
-      <div>
-        Loading.......
+      <div class="ui segment loading-size">
+        <div class="ui active dimmer">
+          <div class="ui massive text loader">Loading</div>
+        </div>
+        <p></p>
       </div>
     );
   }
