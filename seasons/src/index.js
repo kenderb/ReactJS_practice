@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDsiplay from './SeasonDisplay';
+import LoadingIcon from './LoadingIcon';
 class App extends React.Component {
   state = { latitude: null, errorMessage: '' };
 
@@ -16,12 +17,7 @@ class App extends React.Component {
 
   showLoadingMessage(){
     return(
-      <div class="ui segment loading-size">
-        <div class="ui active dimmer">
-          <div class="ui massive text loader">Loading</div>
-        </div>
-        <p></p>
-      </div>
+      <LoadingIcon message="Please acept the prompt"/>
     );
   }
 
