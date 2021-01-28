@@ -17,7 +17,7 @@ class App extends React.Component {
 
   showLoadingMessage(){
     return(
-      <LoadingIcon message="Please acept the prompt"/>
+      <LoadingIcon message="Please allow the location prompt" />
     );
   }
 
