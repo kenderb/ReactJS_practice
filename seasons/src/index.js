@@ -1,22 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDsiplay from './SeasonDisplay';
+import LoadingIcon from './LoadingIcon';
 class App extends React.Component {
   state = { latitude: null, errorMessage: '' };
 
   showErrorMessage(){
     return(
-      <div>
-        Error: {this.state.errorMessage}
+      <div class="ui negative message">
+        <div class="header">
+          Error: {this.state.errorMessage}
+        </div>
       </div>
     );
   }
 
   showLoadingMessage(){
     return(
-      <div>
-        Loading.......
-      </div>
+      <LoadingIcon message="Please allow the location prompt" />
     );
   }
 
@@ -27,12 +28,20 @@ class App extends React.Component {
     );
   }
 
-  render() {
+  renderContent() {
     if (this.state.errorMessage) return this.showErrorMessage();
     if (!this.state.errorMessage && !this.state.latitude) return this.showLoadingMessage();
     return(
       <div>
         <SeasonDsiplay latitude={ this.state.latitude }/>
+      </div>
+    );
+  }
+
+  render() {
+    return(
+      <div>
+        { this.renderContent() }
       </div>
     );
   }

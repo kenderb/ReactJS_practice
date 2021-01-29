@@ -1,0 +1,33 @@
+.icon-left {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  
+}
+
+.icon-rigth {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  
+}
+
+.season-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.winter {
+  background-color: rgb(65, 135, 175);
+  color: rgb(181, 207, 255);
+}
+
+.summer {
+  background-color: rgb(255, 253, 161);
+  color: rgb(73, 40, 10);
+}
+
+.loading-size {
+  height: 100vh;
+}
