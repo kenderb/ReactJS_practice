@@ -12,9 +12,17 @@ class Counters extends Component {
   }
 
   handleDelete(currentId) {
-    this.setState({
-      counters: this.state.counters.filter(counter => currentId !== counter.id)
+    const counters = this.state.counters.filter(counter => currentId !== counter.id);
+    this.setState({counters});
+  }
+
+  handleIncrement(counter) {
+    const counters = this.state.counters.map((c) => {
+      if (counter === c) return {id: c.id, value: c.value += 1};
+      return c;
     });
+
+    this.setState({counters});
   }
 
   render() {
@@ -25,8 +33,9 @@ class Counters extends Component {
         {counters.map(counter => <Counter 
           key={counter.id} 
           counter={counter} 
-          onDelete={ () => this.handleDelete(counter.id) 
-        }/>)}
+          onDelete={ () => this.handleDelete(counter.id) }
+          onIncrement={() => this.handleIncrement(counter)}
+        />)}
       </div>
     );
   }
