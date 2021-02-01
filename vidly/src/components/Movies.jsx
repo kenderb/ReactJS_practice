@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Movie from './Movie';
-import {getMovies} from './services/fakeMovieService';
+import {getMovies} from '../services/fakeMovieService';
 
 class Movies extends Component {
   state = { 
@@ -9,9 +9,8 @@ class Movies extends Component {
   }
 
   deleteEvent(currentId){
-    console.log(currentId);
     this.setState({
-      movies: this.state.movies.filter( (movie) => currentId !== movie._id ? movie:'')
+      movies: this.state.movies.filter( (movie) => currentId !== movie._id ? movie : '')
     })
   }
 
@@ -31,13 +30,11 @@ class Movies extends Component {
             <div className="row mb-2" key={`${movie._id}-container`}>
               <Movie 
                 title={movie.title} 
-                key={movie._id}
-                _id = {movie._id}
                 genre={movie.genre.name}
                 numberInStock={movie.numberInStock}
                 dailyRentalRate={movie.dailyRentalRate}
               />
-              <button className="col-2 btn btn-danger h-25 w-auto" key={`${movie._id}-btn`} onClick={()=> this.deleteEvent(movie._id)}>Delete</button>
+              <button className="col-2 btn btn-danger h-25 w-auto" onClick={()=> this.deleteEvent(movie._id)}>Delete</button>
             </div>
           );
         })}
