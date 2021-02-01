@@ -14,8 +14,8 @@ class Movies extends Component {
       movies: this.state.movies.filter( (movie) => currentId !== movie._id ? movie:'')
     })
   }
-
-  render() { 
+  
+  renderMovies(){
     return ( 
       <div className="container">
         <div className="p-2">Showing {this.state.movies.length} movies in the database</div>
@@ -43,6 +43,15 @@ class Movies extends Component {
         })}
       </div>
     );
+  }
+
+  noMoviesRender(){
+    return <p>Not movies on the database</p>
+  }
+
+  render() { 
+    if (this.state.movies.length > 0) return this.renderMovies();
+    return this.noMoviesRender();
   }
 }
  
