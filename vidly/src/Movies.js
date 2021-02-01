@@ -14,7 +14,7 @@ class Movies extends Component {
       movies: this.state.movies.filter( (movie) => currentId !== movie._id ? movie:'')
     })
   }
-  
+
   renderMovies(){
     return ( 
       <div className="container">
@@ -28,7 +28,7 @@ class Movies extends Component {
         </div>
         {this.state.movies.map((movie) => { 
           return(
-            <div className="row m-3" key={`${movie._id}-container`}>
+            <div className="row mb-2" key={`${movie._id}-container`}>
               <Movie 
                 title={movie.title} 
                 key={movie._id}
@@ -37,7 +37,7 @@ class Movies extends Component {
                 numberInStock={movie.numberInStock}
                 dailyRentalRate={movie.dailyRentalRate}
               />
-              <button className="col-2 btn btn-danger" key={`${movie._id}-btn`} onClick={()=> this.deleteEvent(movie._id)}>Delete</button>
+              <button className="col-2 btn btn-danger h-25 w-auto" key={`${movie._id}-btn`} onClick={()=> this.deleteEvent(movie._id)}>Delete</button>
             </div>
           );
         })}
@@ -54,5 +54,5 @@ class Movies extends Component {
     return this.noMoviesRender();
   }
 }
- 
+
 export default Movies;

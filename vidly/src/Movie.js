@@ -3,7 +3,6 @@ import Movies from './Movies';
 
 class Movie extends Component {
 
-
   render() { 
     return ( 
       <>
