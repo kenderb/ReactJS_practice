@@ -25,11 +25,21 @@ class Counters extends Component {
     this.setState({counters});
   }
 
+  handleReset = () => {
+    const counters = this.state.counters.map(counter => {
+      return {id: counter.id, value: 0 };
+    });
+    this.setState({counters});
+  }
+
   render() {
     const { counters } = this.state;
     
     return ( 
       <div>
+        <button className="btn btn-primary" onClick={this.handleReset}>
+          Reset
+        </button>
         {counters.map(counter => <Counter 
           key={counter.id} 
           counter={counter} 
