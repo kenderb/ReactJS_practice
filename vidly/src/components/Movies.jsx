@@ -15,12 +15,7 @@ class Movies extends Component {
   }
   
   handleToggle = (id) => {
-    const movies = this.state.movies.map(movie => {
-      if(id === movie._id){
-        return {...movie, liked: movie.liked ? false : true}
-      }
-      return movie;
-    });
+    const movies = this.state.movies.map(movie => id === movie._id ? {...movie, liked: !movie.liked} : movie );
     this.setState({movies});
   }
 
