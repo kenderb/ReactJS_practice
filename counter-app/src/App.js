@@ -33,6 +33,15 @@ export default class App extends Component{
     });
     this.setState({counters});
   }
+  
+  handleDecrease = (counter) => {
+    const counters = this.state.counters.map((c) => {
+      if (counter === c) return {id: c.id, value: c.value -= 1};
+      return c;
+    });
+
+    this.setState({counters});
+  }
 
   render(){
     return(
@@ -41,6 +50,7 @@ export default class App extends Component{
         <main className="container mt-3">
           <Counters 
             onDelete={this.handleDelete}
+            onDecrease={this.handleDecrease}
             onReset={this.handleReset}
             onIncrement={this.handleIncrement}
             state={this.state}

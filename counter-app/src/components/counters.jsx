@@ -15,6 +15,7 @@ class Counters extends Component {
           counter={counter} 
           onDelete={ () => this.props.onDelete(counter.id) }
           onIncrement={() => this.props.onIncrement(counter)}
+          onDecrease={()=> this.props.onDecrease(counter)}
         />)}
       </div>
     );

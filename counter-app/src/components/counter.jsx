@@ -3,20 +3,28 @@ import React, { Component } from 'react';
 class Counter extends Component {
 
   render() {
+    const {onIncrement, onDecrease, onDelete, counter} = this.props;
     return (
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button 
-          onClick={this.props.onIncrement} 
-          className="btn btn-secondary btn-sm"
+          onClick={onIncrement} 
+          className="btn btn-secondary btn-sm m-2"
         >
-          Increment
+          +
         </button>
-        <button className="btn btn-danger btn-small m-2" onClick={this.props.onDelete}>
-          Delete
+        <button className={`btn btn-secondary btn-sm m-2 ${ this.desableBtn() }`} onClick={onDecrease} disabled={this.desableBtn()}>
+          -
+        </button>
+        <button className="btn btn-danger btn-small m-2" onClick={onDelete}>
+          x
         </button>
       </div>
     );
+  }
+  
+  desableBtn(){
+    return this.props.counter.value <= 0 ? 'disabled' : null;
   }
 
   getBadgeClasses() {
