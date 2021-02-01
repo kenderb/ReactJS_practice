@@ -8,10 +8,20 @@ class Movies extends Component {
     movies: getMovies()
   }
 
-  deleteEvent(currentId){
+  deleteEvent = (currentId) => {
     this.setState({
       movies: this.state.movies.filter( (movie) => currentId !== movie._id ? movie : '')
     })
+  }
+  
+  handleToggle = (id) => {
+    const movies = this.state.movies.map(movie => {
+      if(id === movie._id){
+        return {...movie, liked: movie.liked ? false : true}
+      }
+      return movie;
+    });
+    this.setState({movies});
   }
 
   renderMovies(){
@@ -23,6 +33,7 @@ class Movies extends Component {
           <div className="col-2">Genre</div>
           <div className="col-2">Stock</div>
           <div className="col-2">Rate</div>
+          <div className="col-2 ">Like</div>
           <div className="col-2 "></div>
         </div>
         {this.state.movies.map((movie) => { 
@@ -33,8 +44,12 @@ class Movies extends Component {
                 genre={movie.genre.name}
                 numberInStock={movie.numberInStock}
                 dailyRentalRate={movie.dailyRentalRate}
+                id={movie._id}
+                onDelete={this.deleteEvent}
+                like={movie.liked}
+                onToggle={this.handleToggle}
               />
-              <button className="col-2 btn btn-danger h-25 w-auto" onClick={()=> this.deleteEvent(movie._id)}>Delete</button>
+              
             </div>
           );
         })}
