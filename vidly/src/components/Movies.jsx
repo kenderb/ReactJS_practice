@@ -57,7 +57,7 @@ class Movies extends Component {
     );
   }
 
-  noMoviesRender(){
+  noMoviesRender() {
     return <p>Not movies on the database</p>
   }
 
