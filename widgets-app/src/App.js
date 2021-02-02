@@ -18,6 +18,7 @@ const items = [
     description: 'JavaScript is a programming language to create great apps using HTML and CSS.'
   },
 ];
+
 const App = () => {
   return(
     <div className="container">
