@@ -18,6 +18,32 @@ class Movies extends Component {
     const movies = this.state.movies.map(movie => id === movie._id ? {...movie, liked: !movie.liked} : movie );
     this.setState({movies});
   }
+  
+  renderPage() {
+    const number = 4;
+    let counter = 0
+    return(
+      this.state.movies.map((movie) => { 
+        if(counter < number) {
+          counter += 1;
+          return(
+            <div className="row mb-2" key={`${movie._id}-container`}>
+              <Movie 
+                title={movie.title} 
+                genre={movie.genre.name}
+                numberInStock={movie.numberInStock}
+                dailyRentalRate={movie.dailyRentalRate}
+                id={movie._id}
+                onDelete={this.deleteEvent}
+                like={movie.liked}
+                onToggle={this.handleToggle}
+              />
+            </div>
+          );
+        }
+      })
+    );
+  }
 
   renderMovies(){
     return ( 
@@ -31,23 +57,8 @@ class Movies extends Component {
           <div className="col-2 ">Like</div>
           <div className="col-2 "></div>
         </div>
-        {this.state.movies.map((movie) => { 
-          return(
-            <div className="row mb-2" key={`${movie._id}-container`}>
-              <Movie 
-                title={movie.title} 
-                genre={movie.genre.name}
-                numberInStock={movie.numberInStock}
-                dailyRentalRate={movie.dailyRentalRate}
-                id={movie._id}
-                onDelete={this.deleteEvent}
-                like={movie.liked}
-                onToggle={this.handleToggle}
-              />
-              
-            </div>
-          );
-        })}
+        {this.renderPage()}
+      
       </div>
     );
   }
