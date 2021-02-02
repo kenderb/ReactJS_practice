@@ -1,6 +1,4 @@
-import { render } from '@testing-library/react';
 import React from 'react';
-
 
 const renderTitle = (title) =>{
   return(
@@ -24,18 +22,20 @@ const renderDescription = (description) => {
   );
 }
 
-const Accordion = ({items}) =>{
+const Accordion = ({items}) => {
+
+  const listOfItems = items.map( item => {
+    return(
+      <div className="card" key={item.id}>
+        {renderTitle(item.title)}
+        {renderDescription(item.description)}
+      </div>
+    );
+  });
+
   return(
     <div className="accordion">
-      {items.map( item => {
-        return(
-          <div className="card" key={item.id}>
-            {renderTitle(item.title)}
-            {renderDescription(item.description)}
-          </div>
-        );
-      })
-      }
+      { listOfItems }
     </div>
   );
 }
