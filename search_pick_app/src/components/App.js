@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import SearchBar from './SearchBar';
 import unsplash from '../components/api/unsplash';
+import SearchBar from './SearchBar';
+import Images from './Images';
 
 class App extends Component {
   state = { 
@@ -38,6 +39,7 @@ class App extends Component {
           textstate={this.state.inputText} 
           onHandleSunmit={this.handleSubmit}
         />
+        <Images images={this.state.images}/>
       </div>
     );
   }
