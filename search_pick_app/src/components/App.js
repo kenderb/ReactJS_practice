@@ -12,13 +12,16 @@ class App extends Component {
   apiRequest = async () => {
     try {
       const response = await unsplash.get('search/photos/', {
-        params: { query: this.state.inputText},
+        params: { 
+          query: this.state.inputText,
+          orientation: 'landscape'
+        }
       });
 
       this.setState({images: response.data.results})
       console.log(this.state.images);
     } catch (error) {
-      console.dir(error);
+      console.log(error);
     }
   }
 
