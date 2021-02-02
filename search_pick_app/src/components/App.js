@@ -13,8 +13,7 @@ class App extends Component {
     try {
       const response = await unsplash.get('search/photos/', {
         params: { 
-          query: this.state.inputText,
-          orientation: 'landscape'
+          query: this.state.inputText
         }
       });
 

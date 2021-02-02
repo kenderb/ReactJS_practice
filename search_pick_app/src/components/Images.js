@@ -9,10 +9,7 @@ const  Images  = (props) =>{
       <div className="container portfolio">
         {images.map( image => {
           return(
-            <figure className="featured" key={image.id}>
-              <Image imageInfo={image} />
-              <figcaption>{image.description}</figcaption>
-            </figure>
+            <Image imageInfo={image} key={image.id}/>
           );
         })}
       </div>
