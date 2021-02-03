@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import wikipedia from './api/wikipedia';
+import './search.css';
 
 
 const handleChange = (event, setText) => {
@@ -22,7 +23,6 @@ const callApi = async (text, setResult) => {
         srsearch: text,
       },
     });
-  
     setResult(data.query.search);
   } catch (error) {
     console.log(error);
@@ -32,33 +32,43 @@ const callApi = async (text, setResult) => {
 
 const Search = () => {
   
-  const [text, setText] = useState('programming');
+  const [text, setText] = useState('');
   const [result, setResult] = useState([]);
 
   useEffect(() => {
-    callApi(text, setResult);
+    if(text) callApi(text, setResult);
   }, [text]);
 
   return(
     <div className="container">
       <form onSubmit = {(e) => handleSubmit(e, text)} className="card container">
         <div className="form-group card-body">
-          <label htmlFor="name" className="font-weight-bold">Search a topic </label>
+          <label htmlFor="name" className="font-weight-bold">Search a term</label>
           <input 
             type="text" 
             id="name" 
-            placeholder="programming" 
+            placeholder="Search" 
             className="form-control"
             onChange={(e) => handleChange(e, setText)}
             value = {text}
           />
         </div>
       </form>
+  
       <div className="container mt-3">
         <h1 className="h5">results</h1>
-        <div className="card p-3">
-          {result.length}
-        </div>
+        {result.map( item => {
+          return (
+            <div className="card my-3" key={item.pageid}>
+              <div className="card-header">
+                {item.title}
+              </div>
+              <div className="card-body">
+                <span dangerouslySetInnerHTML={{ __html: item.snippet }}></span>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
