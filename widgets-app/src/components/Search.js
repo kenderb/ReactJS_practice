@@ -30,18 +30,21 @@ const callApi = async (text, setResult) => {
 }
 
 const Search = () => {
-  
-  const [text, setText] = useState('');
+  const [text, setText] = useState('cats');
   const [result, setResult] = useState([]);
-
+  
   useEffect(() => {
-    const timeId = setTimeout(() => {
-      if(text) callApi(text, setResult)
-    }, 500);
-    return() => {
-      clearTimeout(timeId);
-    };
-  }, [text]);
+    if (text && !result.length) {
+      callApi(text, setResult)
+    } else {
+      const timeId = setTimeout(() => {
+        if(text) callApi(text, setResult)
+      }, 500);
+      return() => {
+        clearTimeout(timeId);
+      };
+    }
+  }, [text, result.length]);
 
   return(
     <div className="container">
