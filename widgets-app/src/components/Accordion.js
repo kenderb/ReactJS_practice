@@ -1,27 +1,28 @@
 import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSortDown } from '@fortawesome/free-solid-svg-icons'
+import { faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
 
 
 const handleClick = (index, setActiveIndex) => {
   setActiveIndex(index);
 }
 
-const renderTitle = (title, index, setActiveIndex) => {
+const renderTitle = (title, index, activeIndex,  setActiveIndex) => {
   return(
     <div className="card-header">
       <h5 className="mb-0">
         <button className="btn btn-link collapsed" onClick={() => handleClick(index, setActiveIndex)}>
-          <FontAwesomeIcon icon={faSortDown} /> {title}
+          <FontAwesomeIcon icon={index === activeIndex ? faSortUp : faSortDown} /> {title}
         </button>
       </h5>
     </div>
   );
 }
 
-const renderDescription = (description) => {
+const renderDescription = (description, id, activeIndex) => {
+  let classShow = activeIndex === id ? 'show' : '';
   return(
-    <div className="collapse show" >
+    <div className={`collapse ${classShow}`} >
       <div className="card-body">
         {description}
       </div>
@@ -30,13 +31,13 @@ const renderDescription = (description) => {
 }
 
 const Accordion = ({items}) => {
-  const [activeIndex, setActiveIndex] = useState(null);
 
+  const [activeIndex, setActiveIndex] = useState(null);
   const listOfItems = items.map( item => {
     return(
       <div className="card" key={item.id}>
-        {renderTitle(item.title, item.id, setActiveIndex)}
-        {renderDescription(item.description)}
+        {renderTitle(item.title, item.id, activeIndex,  setActiveIndex)}
+        {renderDescription(item.description, item.id, activeIndex)}
       </div>
     );
   });
@@ -44,7 +45,6 @@ const Accordion = ({items}) => {
   return(
     <div className="accordion">
       { listOfItems }
-      { activeIndex }
     </div>
   );
 }
