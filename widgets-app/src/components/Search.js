@@ -35,7 +35,12 @@ const Search = () => {
   const [result, setResult] = useState([]);
 
   useEffect(() => {
-    if(text) callApi(text, setResult);
+    const timeId = setTimeout(() => {
+      if(text) callApi(text, setResult)
+    }, 500);
+    return() => {
+      clearTimeout(timeId);
+    };
   }, [text]);
 
   return(
