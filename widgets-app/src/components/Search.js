@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import wikipedia from './api/wikipedia';
 import './search.css';
 
-
 const handleChange = (event, setText) => {
   setText(event.target.value);
 };
@@ -64,7 +63,15 @@ const Search = () => {
                 {item.title}
               </div>
               <div className="card-body">
-                <span dangerouslySetInnerHTML={{ __html: item.snippet }}></span>
+                <p dangerouslySetInnerHTML={{ __html: item.snippet }}></p>
+                <a 
+                  href={`https://en.wikipedia.org/wiki/${item.title}`} 
+                  className="btn btn-primary" 
+                  target="_blank" 
+                  rel="noreferrer"
+                >
+                  Go to {item.title} page
+                </a>
               </div>
             </div>
           );
