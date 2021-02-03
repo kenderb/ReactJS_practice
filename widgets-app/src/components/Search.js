@@ -6,9 +6,8 @@ const handleChange = (event, setText) => {
   setText(event.target.value);
 };
 
-const handleSubmit = (event, text) => {
+const handleSubmit = (event) => {
   event.preventDefault();
-  console.log('submited', text);
 };
 
 const callApi = async (text, setResult) => {
@@ -26,7 +25,6 @@ const callApi = async (text, setResult) => {
   } catch (error) {
     console.log(error);
   }
-
 }
 
 const Search = () => {
@@ -48,7 +46,7 @@ const Search = () => {
 
   return(
     <div className="container">
-      <form onSubmit = {(e) => handleSubmit(e, text)} className="card container">
+      <form onSubmit = {(e) => handleSubmit(e)} className="card container">
         <div className="form-group card-body">
           <label htmlFor="name" className="font-weight-bold">Search a term</label>
           <input 
