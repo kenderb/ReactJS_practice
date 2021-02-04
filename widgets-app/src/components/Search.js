@@ -28,21 +28,22 @@ const callApi = async (text, setResult) => {
 }
 
 const Search = () => {
-  const [text, setText] = useState('cats');
+  const defaltSearch = 'cats'
+  const [text, setText] = useState(defaltSearch);
   const [result, setResult] = useState([]);
-  
   useEffect(() => {
-    if (text && !result.length) {
+    if(text === defaltSearch) {
       callApi(text, setResult)
     } else {
       const timeId = setTimeout(() => {
         if(text) callApi(text, setResult)
-      }, 500);
-      return() => {
+      }, 800);
+      return () => {
         clearTimeout(timeId);
       };
     }
-  }, [text, result.length]);
+  
+  }, [text]);
 
   return(
     <div className="container">
