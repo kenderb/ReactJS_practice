@@ -1,12 +1,10 @@
 import React from 'react';
-import {Card} from 'react-bootstrap';
+import { Container} from 'react-bootstrap';
 
 const App = () => (
-  <Card>
-    <Card.Body> 
+  <Container>
       App
-    </Card.Body> 
-  </Card>
+  </Container>
 );
 
 export default App;
