@@ -1,28 +1,38 @@
-import React, { useEffect } from 'react';
+import React, { useEffect} from 'react';
 import { connect } from 'react-redux';
-import {Card} from 'react-bootstrap';
+import {Card, Spinner, Container} from 'react-bootstrap';
 import { fetchPosts } from '../actions';
 
 const PostList = ({ posts, fetchPosts }) => {
-
+  const displaySpinner = () => (
+    <div className="d-flex justify-content-center mt-4">
+      <Spinner animation="border" /> 
+    </div>
+  );
+  
   useEffect(() => {
     fetchPosts();
   },[fetchPosts]);
-  console.log(posts);
+  
+  const displayPosts = () => (
+    posts.map(post => 
+      <Card key={post.id} style={{margin: '1rem'}}>
+        <Card.Body>
+          <Card.Title as="h3">{post.title}</Card.Title>
+          <Card.Text>
+            {post.body}
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    )
+  );
   return (
     <div>
-      {posts.map(post => 
-        <Card key={post.id} style={{margin: '1rem'}}>
-          <Card.Body>
-            <Card.Title as="h3">{post.title}</Card.Title>
-            <Card.Text>
-              {post.body}
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      )}
+      {posts.length === 0 ? displaySpinner() : displayPosts()}
     </div>)
 }
+
+
 
 const mapStateToProps = (state) => {
   return {posts: state.posts}
