@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { connet } from 'react-redux';
+import { connect } from 'react-redux';
 import { fetchPost } from '../actions';
 
 const PostList = ({ fetchPost }) => {
@@ -11,4 +11,4 @@ const PostList = ({ fetchPost }) => {
   return <div>Post list</div>
 }
 
-export default connet(null, { fetchPost } )(PostList);
+export default connect(null, { fetchPost } )(PostList);
