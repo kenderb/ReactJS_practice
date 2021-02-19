@@ -1,14 +1,21 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchPost } from '../actions';
+import { fetchPosts } from '../actions';
 
-const PostList = ({ fetchPost }) => {
+const PostList = ({ posts, fetchPosts }) => {
 
-  useEffect(() =>{
-    fetchPost();
-  }, [fetchPost]);
+  useEffect(() => {
+    fetchPosts();
+  },[]);
 
-  return <div>Post list</div>
+  return (
+    <div>
+      {posts.map(post => <div key={post.id}>{post.title}</div>)}
+    </div>)
 }
 
-export default connect(null, { fetchPost } )(PostList);
+const mapStateToProps = (state) => {
+  return {posts: state.posts}
+}
+
+export default connect(mapStateToProps, { fetchPosts } )(PostList);
