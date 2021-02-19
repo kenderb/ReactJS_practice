@@ -1,7 +1,8 @@
 import React, { useEffect} from 'react';
 import { connect } from 'react-redux';
-import {Card, Spinner, Container} from 'react-bootstrap';
+import {Card, Spinner} from 'react-bootstrap';
 import { fetchPosts } from '../actions';
+import UserHeader from './UserHeader';
 
 const PostList = ({ posts, fetchPosts }) => {
   const displaySpinner = () => (
@@ -22,6 +23,7 @@ const PostList = ({ posts, fetchPosts }) => {
           <Card.Text>
             {post.body}
           </Card.Text>
+          <UserHeader userId = {post.userId}  key={post.id}/>
         </Card.Body>
       </Card>
     )
@@ -31,8 +33,6 @@ const PostList = ({ posts, fetchPosts }) => {
       {posts.length === 0 ? displaySpinner() : displayPosts()}
     </div>)
 }
-
-
 
 const mapStateToProps = (state) => {
   return {posts: state.posts}
