@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { fecthUser } from '../actions';
 
 const UserHeader = ({users, userId, fecthUser}) => {
-  useEffect(() =>{
+  useEffect(() => {
     fecthUser(userId);
-  }, [])
+  }, [userId, fecthUser])
   return(
     <div>
       {users ? users.name: null}
