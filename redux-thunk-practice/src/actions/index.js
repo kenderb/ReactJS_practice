@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import jasonPlaceholder from '../apis/jasonPlaceholder';
 
 export const FETCH_POSTS = 'FETCH_POSTS'
@@ -8,14 +9,16 @@ export const fetchPosts = () =>  async dispatch => {
     const response = await jasonPlaceholder.get('/posts');
     dispatch({type: FETCH_POSTS, payload: response.data})
   } catch (error) {
-    console.log(error.messages);
+    console.log(error.messages);  
   }
   
 }
 
-export const fecthUser = (userId) =>  async dispatch => {
+export const fecthUser = id => dispatch => _fecthUser(id, dispatch);
 
-  const response = await jasonPlaceholder.get(`/users/${userId}`);
-
-  dispatch({type: FETCH_USER, payload: response.data})
-}
+const _fecthUser = _.memoize(async (id, dispatch) => {
+  
+  const response = await jasonPlaceholder.get(`/users/${id}`);
+  dispatch({ type: 'FETCH_USER', payload: response.data });
+  
+});

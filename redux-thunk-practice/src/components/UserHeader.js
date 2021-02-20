@@ -1,8 +1,9 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fecthUser } from '../actions';
 
 const UserHeader = ({users, userId, fecthUser}) => {
+  
   useEffect(() => {
     fecthUser(userId);
   }, [userId, fecthUser])
